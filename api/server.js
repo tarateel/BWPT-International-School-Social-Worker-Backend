@@ -2,9 +2,9 @@ const express = require("express")
 const helmet = require("helmet")
 const cors = require("cors")
 
+const authenticate = require('../auth/authenticate-middleware.js');
 const authRouter = require('../auth/auth-router.js');
-const usersRouter = require('../users/users-router');
-const studentsRouter = require('../students/students-router');
+const studentsRouter = require('../students/students-router.js');
 
 const morgan = require("morgan")
 
@@ -16,8 +16,7 @@ server.use(morgan('dev'));
 server.use(express.json());
 
 server.use('/api/auth', authRouter);
-server.use('/api/users', usersRouter);
-server.use('/api/students', studentsRouter);
+server.use('/api/students', authenticate(), studentsRouter);
 
 server.get('/', (req, res, next) => {
   res.send('Ghana Make a Difference')

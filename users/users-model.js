@@ -1,21 +1,33 @@
 const bcrypt = require('bcryptjs');
 const db = require('../database/dbConfig');
 
+userInfo = {
+  'id': 'id',
+  'username': 'username',
+  'password': 'password',
+  'email': 'email',
+  'phone': 'phone',
+  'organization': 'organization',
+  'first_name': 'first_name',
+  'last_name': 'last_name',
+  'role': 'role'
+}
+
 function find() {
   return db('users')
-    .select('id', 'username')
+    .select(userInfo)
 };
 
 function findByUsername(username) {
   return db('users')
     .where(username)
-    .select('id', 'username', 'password')
+    .select(userInfo)
 };
 
 function findById(id) {
-  return db("users")
+  return db('users')
     .where({ id })
-    .first('id', 'username')
+    .first(userInfo)
 }
 
 async function add(user) {
