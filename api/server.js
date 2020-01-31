@@ -5,6 +5,7 @@ const cors = require("cors")
 const authenticate = require('../auth/authenticate-middleware.js');
 const authRouter = require('../auth/auth-router.js');
 const studentsRouter = require('../students/students-router.js');
+const gradesRouter = require('../grades/grades-router.js');
 
 const morgan = require("morgan")
 
@@ -17,6 +18,7 @@ server.use(express.json());
 
 server.use('/api/auth', authRouter);
 server.use('/api/students', authenticate(), studentsRouter);
+server.use('/api/grades', authenticate(), gradesRouter);
 
 server.get('/', (req, res, next) => {
   res.send('Ghana Make a Difference')

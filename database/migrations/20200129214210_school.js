@@ -31,44 +31,9 @@ exports.up = async function(knex) {
     .createTable('grades', tbl => {
       tbl.increments('id')
       tbl
-        .string('grade_k')
+        .string('grade')
           .notNullable()
-      tbl
-        .string('grade_1')
-        .notNullable()
-      tbl
-        .string('grade_2')
-        .notNullable()
-      tbl
-        .string('grade_3')
-        .notNullable()
-      tbl
-        .string('grade_4')
-        .notNullable()
-      tbl
-        .string('grade_5')
-        .notNullable()
-      tbl
-        .string('grade_6')
-        .notNullable()
-      tbl
-        .string('grade_7')
-        .notNullable()
-      tbl
-        .string('grade_8')
-        .notNullable()
-      tbl
-        .string('grade_9')
-        .notNullable()
-      tbl
-        .string('grade_10')
-        .notNullable()
-      tbl
-        .string('grade_11')
-        .notNullable()
-      tbl
-        .string('grade_12')
-          .notNullable();
+      ;
     })
 
   await knex.schema
@@ -114,7 +79,7 @@ exports.up = async function(knex) {
         .string('contact_info')
         .notNullable()
       tbl
-        .string('dates_visited')
+        .integer('visit_id')
         .notNullable();
   })
 
@@ -130,16 +95,18 @@ exports.up = async function(knex) {
     .createTable('students_visits', tbl => {
       tbl
         .integer('student_id')
-        .unsigned()
         .notNullable()
         .references('id')
         .inTable('students')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE')
       tbl
         .integer('visit_id')
-        .unsigned()
         .notNullable()
         .references('id')
         .inTable('visits')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE')
       tbl
         .primary(['student_id', 'visit_id']);
     })

@@ -1,0 +1,31 @@
+exports.seed = async (knex) => {
+  await knex("students_visits").insert([
+    { student_id: 1, visit_id: 1 },
+    { student_id: 1, visit_id: 2 },
+    { student_id: 1, visit_id: 3 },
+    { student_id: 2, visit_id: 1 },
+    { student_id: 2, visit_id: 2 },
+    { student_id: 2, visit_id: 3 },
+    { student_id: 3, visit_id: 1 },
+    { student_id: 3, visit_id: 2 },
+    { student_id: 3, visit_id: 3 },
+    { student_id: 4, visit_id: 1 },
+    { student_id: 4, visit_id: 2 },
+    { student_id: 4, visit_id: 3 },
+    { student_id: 5, visit_id: 1 },
+    { student_id: 5, visit_id: 2 },
+    { student_id: 5, visit_id: 3 },
+    { student_id: 6, visit_id: 1 },
+    { student_id: 6, visit_id: 2 },
+    { student_id: 6, visit_id: 3 },
+    { student_id: 7, visit_id: 1 },
+    { student_id: 7, visit_id: 2 },
+    { student_id: 7, visit_id: 3 },
+    { student_id: 8, visit_id: 1 },
+    { student_id: 8, visit_id: 2 },
+    { student_id: 8, visit_id: 3 },
+    { student_id: 9, visit_id: 1 },
+    { student_id: 9, visit_id: 2 },
+    { student_id: 9, visit_id: 3 }
+  ])
+}
