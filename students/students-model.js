@@ -12,12 +12,10 @@ function findStudentById(id) {
 		.first();
 };
 
-function addStudent(student) {
-  return db('students')
-    .insert(student)
-		.then(ids => {
-      return findStudentById(ids[0])
-    })
+async function addStudent(student) {
+  const [id] = await db('students')
+    .insert(student);
+  return findStudentById(id[0]);
 };
 
 async function updateStudent(changes, id) {

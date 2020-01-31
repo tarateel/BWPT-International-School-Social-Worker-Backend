@@ -1,8 +1,6 @@
-const bcrypt = require('bcryptjs');
 const express = require('express');
-const jwt = require('jsonwebtoken');
-
-const router = require('express').Router();
+const Grades = require('./grades-model.js');
+const router = express.Router();
 
 router.get('/', (req, res) => {
   Grades.findGrades()
@@ -22,7 +20,7 @@ router.get('/:id', (req, res) => {
     if (grade) {
       res.json(grade);
     } else {
-      res.status(404).json({ message: 'Could not find student with given id.' })
+      res.status(404).json({ message: 'Could not find grade with given id.' })
     }
   })
   .catch(err => {
