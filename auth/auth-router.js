@@ -12,6 +12,7 @@ router.post('/register', async (req, res, next) => {
 
     res.status(201).json(registered)
   } catch (err) {
+    console.log(err);
     next(err)
   }
 });
@@ -38,10 +39,11 @@ router.post('/login', async (req, res, next) => {
       })
     } else {
       res.status(401).json({
-        message: 'You shall not pass!'
+        message: 'You are not authorized to view this information. Please check your username and password and try again.'
       })
     }
   } catch (err) {
+    console.log(err);
     next(err)
   };
 });

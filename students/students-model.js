@@ -35,7 +35,7 @@ function removeStudent(id) {
 			if (!student) {
 				return null
 			} else {
-				return db('student')
+				return db('students')
 					.where({ id })
 					.del()
 					.then(() => {

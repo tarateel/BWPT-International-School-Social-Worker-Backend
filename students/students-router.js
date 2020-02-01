@@ -26,6 +26,7 @@ router.get('/', (req, res) => {
     res.json(students);
   })
   .catch(err => {
+    console.log(err);
     res.status(500).json({ message: 'Failed to get students' });
   });
 });
@@ -38,10 +39,12 @@ router.get('/:id', (req, res) => {
     if (student) {
       res.json(student);
     } else {
+      console.log(err);
       res.status(404).json({ message: 'Could not find student with given id.' })
     }
   })
   .catch(err => {
+    console.log(err);
     res.status(500).json({ message: 'Failed to get student' });
   });
 });
@@ -54,6 +57,7 @@ router.post('/', (req, res) => {
     res.status(201).json(student);
   })
   .catch (err => {
+    console.log(err);
     res.status(500).json({ message: 'Failed to add student' });
   });
 });
@@ -65,15 +69,17 @@ router.put('/:id', (req, res) => {
   Students.findStudentById(id)
   .then(student => {
     if (student) {
-      Students.update(changes, id)
+      Students.updateStudent(changes, id)
       .then(updatedStudent => {
         res.json(updatedStudent);
       });
     } else {
+    console.log(err);
       res.status(404).json({ message: 'Could not find student with given id' });
     }
   })
   .catch (err => {
+    console.log(err);
     res.status(500).json({ message: 'Failed to update student' });
   });
 });
@@ -90,6 +96,7 @@ router.delete('/:id', (req, res) => {
     }
   })
   .catch(err => {
+    console.log(err);
     res.status(500).json({ message: 'Failed to delete student' });
   });
 });
