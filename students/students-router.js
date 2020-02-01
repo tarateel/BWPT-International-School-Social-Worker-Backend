@@ -17,7 +17,7 @@ const studentInfo = {
   'special_needs': 'special_needs',
   'representative': 'representative',
   'contact_info': 'contact_info',
-  'dates_visited': 'dates_visited'
+  'visit_id': 'visit_id'
 }
 
 router.get('/', (req, res) => {
@@ -54,7 +54,7 @@ router.post('/', (req, res) => {
     res.status(201).json(student);
   })
   .catch (err => {
-    res.status(500).json({ message: 'Failed to create new student' });
+    res.status(500).json({ message: 'Failed to add student' });
   });
 });
 
@@ -62,7 +62,7 @@ router.put('/:id', (req, res) => {
   const { id } = req.params;
   const changes = req.body;
 
-  Students.findById(id)
+  Students.findStudentById(id)
   .then(student => {
     if (student) {
       Students.update(changes, id)
@@ -75,6 +75,22 @@ router.put('/:id', (req, res) => {
   })
   .catch (err => {
     res.status(500).json({ message: 'Failed to update student' });
+  });
+});
+
+router.delete('/:id', (req, res) => {
+  const { id } = req.params;
+
+  Students.removeStudent(id)
+  .then(deleted => {
+    if (deleted) {
+      res.json({ removed: deleted });
+    } else {
+      res.status(404).json({ message: 'Could not find student with given id' });
+    }
+  })
+  .catch(err => {
+    res.status(500).json({ message: 'Failed to delete student' });
   });
 });
 

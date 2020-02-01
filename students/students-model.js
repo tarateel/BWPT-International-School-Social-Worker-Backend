@@ -13,9 +13,10 @@ function findStudentById(id) {
 };
 
 async function addStudent(student) {
-  const [id] = await db('students')
-    .insert(student);
-  return findStudentById(id[0]);
+	const [id] = await db('students').insert(student)
+	return db('students')
+		.where({ id })
+		.first()
 };
 
 async function updateStudent(changes, id) {
@@ -26,9 +27,28 @@ async function updateStudent(changes, id) {
 		return findStudentById(id)
 };
 
+function removeStudent(id) {
+	return db('students')
+		.where({ id })
+		.select()
+		.then(student => {
+			if (!student) {
+				return null
+			} else {
+				return db('student')
+					.where({ id })
+					.del()
+					.then(() => {
+						return student;
+					})
+			}
+		})
+};
+
 module.exports = {
   findStudents,
   findStudentById,
   addStudent,
-  updateStudent
+  updateStudent,
+  removeStudent
 };
