@@ -3,6 +3,7 @@ const express = require('express');
 const jwt = require('jsonwebtoken');
 const Users = require('../users/users-model');
 const secrets = require('../config/secrets');
+const authenticate = require('../auth/authenticate-middleware');
 
 const router = require('express').Router();
 
@@ -46,6 +47,19 @@ router.post('/login', async (req, res, next) => {
     console.log(err);
     next(err)
   };
+});
+
+router.get('/logout', authenticate(), async (req, res, next) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.log(err);
+      next(err)
+    } else {
+      res.json({
+        message: 'You are logged out.'
+      })
+    }
+  })
 });
 
 module.exports = router

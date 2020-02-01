@@ -6,6 +6,7 @@ const authenticate = require('../auth/authenticate-middleware.js');
 const authRouter = require('../auth/auth-router.js');
 const studentsRouter = require('../students/students-router.js');
 const gradesRouter = require('../grades/grades-router.js');
+const usersRouter = require('../users/users-router.js');
 
 const morgan = require("morgan")
 
