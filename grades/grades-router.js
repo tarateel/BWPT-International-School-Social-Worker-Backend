@@ -28,17 +28,17 @@ router.get('/:id', (req, res) => {
   });
 });
 
-router.get('/:id/students', (req, res) => {
-  const { id } = req.params;
+// router.get('/:id/students', (req, res) => {
+//   const { id } = req.params;
 
-  Grades.findStudentsByGrade(id)
-  .then(students => {
-    res.status(200).json(students)
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json({ message: 'Failed to get list of students' });
-  });
-});
+//   Grades.findStudentsByGrade(id)
+//   .then(students => {
+//     res.status(200).json(students)
+//   })
+//   .catch(err => {
+//     console.log(err);
+//     res.status(500).json({ message: 'Failed to get list of students' });
+//   });
+// });
 
 module.exports = router;
