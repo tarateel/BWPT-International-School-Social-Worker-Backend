@@ -31,9 +31,8 @@ exports.up = async function(knex) {
     .createTable('grades', tbl => {
       tbl.increments('id')
       tbl
-        .string('grade')
-          .notNullable()
-      ;
+        .string('grade_id')
+        .notNullable();
     })
 
   await knex.schema
@@ -110,9 +109,30 @@ exports.up = async function(knex) {
       tbl
         .primary(['student_id', 'visit_id']);
     })
+
+    await knex.schema
+    .createTable('students_grades', tbl => {
+      tbl
+        .integer('student_id')
+        .notNullable()
+        .references('id')
+        .inTable('students')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE')
+      tbl
+        .integer('grade_id')
+        .notNullable()
+        .references('id')
+        .inTable('grades')
+        .onDelete('CASCADE')
+        .onUpdate('CASCADE')
+      tbl
+        .primary(['student_id', 'grade_id']);
+    })
 };
 
 exports.down = async function(knex) {
+  await knex.schema.dropTableIfExists('students_grades')
   await knex.schema.dropTableIfExists('students_visits')
   await knex.schema.dropTableIfExists('visits')
   await knex.schema.dropTableIfExists('students')

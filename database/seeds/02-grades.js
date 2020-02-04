@@ -1,17 +1,17 @@
 exports.seed = async (knex) => {
   await knex('grades').insert([
-    { grade: 'Grade K' },
-    { grade: 'Grade 1' },
-    { grade: 'Grade 2' },
-    { grade: 'Grade 3' },
-    { grade: 'Grade 4' },
-    { grade: 'Grade 5' },
-    { grade: 'Grade 6' },
-    { grade: 'Grade 7' },
-    { grade: 'Grade 8' },
-    { grade: 'Grade 9' },
-    { grade: 'Grade 10' },
-    { grade: 'Grade 11' },
-    { grade: 'Grade 12' }
+    { grade_id: 'Grade K' },
+    { grade_id: 'Grade 1' },
+    { grade_id: 'Grade 2' },
+    { grade_id: 'Grade 3' },
+    { grade_id: 'Grade 4' },
+    { grade_id: 'Grade 5' },
+    { grade_id: 'Grade 6' },
+    { grade_id: 'Grade 7' },
+    { grade_id: 'Grade 8' },
+    { grade_id: 'Grade 9' },
+    { grade_id: 'Grade 10' },
+    { grade_id: 'Grade 11' },
+    { grade_id: 'Grade 12' }
   ])
 }
