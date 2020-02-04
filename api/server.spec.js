@@ -73,4 +73,21 @@ describe('Test suite: register and login', () => {
         })
   });
 
+  it('should verify user is logged in and then delete a student', async () => {
+    return res = await request(server)
+      .post('/api/auth/login')
+      .send({
+        username: "testuser",
+        password: "test"
+      })
+      const students = await request(server)
+        .delete('/api/students/1')
+        .set('Authorization', res.body.token)
+        .then(res => {
+          expect(res.status).toBe(200)
+          expect(res.type).toBe('application/json')
+          expect([res.body]).toBeArray()
+        })
+  });
+
 })
