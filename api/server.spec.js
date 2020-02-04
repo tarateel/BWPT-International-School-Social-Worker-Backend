@@ -90,4 +90,36 @@ describe('Test suite: register and login', () => {
         })
   });
 
+  it('should verify user is logged in and then add a student', async () => {
+    return res = await request(server)
+      .post('/api/auth/login')
+      .send({
+        username: "testuser",
+        password: "test"
+      })
+      const students = await request(server)
+        .post('/api/students')
+        .set('Authorization', res.body.token)
+        .send({
+          "first_name": "Kwabena",
+          "last_name": "Domakyaareh",
+          "grade_id": "12",
+          "background_story": "background story",
+          "status": "student",
+          "age": 17,
+          "insurance_card": 1,
+          "insurance_expiration_date": "12-31-2020",
+          "birth_certificate": 1,
+          "special_needs": "special needs",
+          "representative": "representative's name",
+          "contact_info": "contact information",
+          "visit_id": 2
+        })
+        .then(res => {
+          expect(res.status).toBe(200)
+          expect(res.type).toBe('application/json')
+          expect([res.body]).toBeArray()
+        })
+  });
+
 })
