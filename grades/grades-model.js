@@ -12,15 +12,15 @@ function findGradeById(id) {
 		.first();
 };
 
-function findStudentsByGrade(id) {
-	return db('students')
-		.join('grades', 'grades.id', 'students.grade_id')
-		.where({ grade_id:grades.id })
-		.select('*')
-};
+// function findStudentsByGrade(id) {
+// 	return db('students')
+// 		.join('grades', 'grades.id', 'students.grade_id')
+// 		.where({ grade_id:grades.id })
+// 		.select('*')
+// };
 
 module.exports = {
   findGrades,
   findGradeById,
-  findStudentsByGrade
+  // findStudentsByGrade
 };

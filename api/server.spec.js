@@ -21,7 +21,7 @@ describe('Test suite: register and login', () => {
       .then(res => {
         expect(res.status).toBe(201)
         expect(res.type).toBe('application/json')
-        expect(res.body.username).toBeString()
+        expect([res.body]).toBeArray()
       })
   });
 
@@ -116,7 +116,29 @@ describe('Test suite: register and login', () => {
           "visit_id": 2
         })
         .then(res => {
-          expect(res.status).toBe(200)
+          expect(res.status).toBe(201)
+          expect(res.type).toBe('application/json')
+          expect([res.body]).toBeArray()
+        })
+  });
+
+  it('should verify user is logged in and then update student data', async () => {
+    return res = await request(server)
+      .post('/api/auth/login')
+      .send({
+        username: "testuser",
+        password: "test"
+      })
+      const students = await request(server)
+        .put('/api/students/')
+        .set('Authorization', res.body.token)
+        .send({
+          "grade_id": 13,
+          "age": 17,
+          "visit_id": 3
+        })
+        .then(res => {
+          expect(res.status).toBe(201)
           expect(res.type).toBe('application/json')
           expect([res.body]).toBeArray()
         })
