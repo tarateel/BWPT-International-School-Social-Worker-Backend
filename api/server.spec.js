@@ -39,4 +39,38 @@ describe('Test suite: register and login', () => {
       })
   });
 
+  it('should verify user is logged in and get a list of all students', async () => {
+    return res = await request(server)
+      .post('/api/auth/login')
+      .send({
+        username: "testuser",
+        password: "test"
+      })
+      const students = await request(server)
+        .get('/api/students')
+        .set('Authorization', res.body.token)
+        .then(res => {
+          expect(res.status).toBe(200)
+          expect(res.type).toBe('application/json')
+          expect([res.body]).toBeArray()
+        })
+  });
+
+  it('should verify user is logged in and get all data of an individual student', async () => {
+    return res = await request(server)
+      .post('/api/auth/login')
+      .send({
+        username: "testuser",
+        password: "test"
+      })
+      const students = await request(server)
+        .get('/api/students/1')
+        .set('Authorization', res.body.token)
+        .then(res => {
+          expect(res.status).toBe(200)
+          expect(res.type).toBe('application/json')
+          expect([res.body]).toBeArray()
+        })
+  });
+
 })
