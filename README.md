@@ -53,6 +53,7 @@
 | GET    | /api/students/id   | Returns the student with the id passed in as part of the URL. Authorization token required.                            |
 | POST   | /api/students      | Creates a new student with the information in the `request body`. Authorization token required.                        |
 | PUT    | /api/students/id   | Updates the student with new information in the `request body` using the `id` passed as part of the URL. Authorization                                    token required.                                                                                                        |
+| DELETE | /api/students/id   | Removes the student using the `id` passed as part of the URL. Authorization token required.                            |
 
 ## Grades/Visits
 
