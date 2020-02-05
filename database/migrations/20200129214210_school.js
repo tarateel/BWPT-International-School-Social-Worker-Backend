@@ -15,7 +15,7 @@ exports.up = async function(knex) {
       .string('phone')
     tbl
       .string('organization')
-      .notNullable
+      .notNullable()
     tbl
       .string('first_name')
       .notNullable()
@@ -40,10 +40,10 @@ exports.up = async function(knex) {
       tbl.increments('id')
       tbl
         .string('first_name')
-        .notNullable
+        .notNullable()
       tbl
         .string('last_name')
-        .notNullable
+        .notNullable()
       tbl
         .string('grade_id')
         .unsigned()
@@ -65,7 +65,6 @@ exports.up = async function(knex) {
         .notNullable()
       tbl
         .string('insurance_expiration_date')
-        .notNullable()
       tbl
         .boolean('birth_certificate')
         .notNullable()
