@@ -1,7 +1,7 @@
 # Backend
 
 # Description
-* The API consists of register and login processes for school admins and social workers. Once registered, a user is then required to login, returning an authorization token. This token is required in the header for all other endpoint requests or the API will send back an error.
+* The API consists of register and login processes for school admins and social workers. Once registered, a user is then required to login, returning an authorization token. This token is required in the header for all other endpoint requests or the API will send back an error. Once logged in and authenticated, a user can view all students, view information for an individual student, add a student, and update information for a student.
 
 ## User Schema
 
@@ -52,16 +52,9 @@
 | GET    | /api/students      | Returns a list of all students in the database. Authorization token required.                                          |
 | GET    | /api/students/id   | Returns the student with the id passed in as part of the URL. Authorization token required.                            |
 | POST   | /api/students      | Creates a new student with the information in the `request body`. Authorization token required.                        |
-| PUT    | /api/students/id   | Updates the student with new information in the `request body` using the `id` passed as part of the URL.               |
-|        |                    | Authorization token required.                                                                                          |
+| PUT    | /api/students/id   | Updates the student with new information in the `request body` using the `id` passed as part of the URL. Authorization                                    token required.                                                                                                        |
 
 ## Grades/Visits
 
-* Each student's information includes a `grade_id` and `visit_id`.
-
-| Method | URL                | Description                                                                                                            |
-| ------ | ------------------ | ---------------------------------------------------------------------------------------------------------------------- |
-| GET    | /api/grades        | Returns a list of all the grade levels in the school. Authorization token required.                                    |
-
-* Each student's information includes a `visit_id`, which links to the table `visits` and indicates the date that student was last visited by a social worker.
+* Each student's information also includes a `grade_id`, indicating the student's current grade level, and a `visit_id`, indicating the last time the student was visited by a social worker.
 
