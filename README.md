@@ -3,7 +3,7 @@
 # Description
 * The API consists of register and login processes for school admins and social workers. Once registered, a user is then required to login, returning an authorization token. This token is required in the header for all other endpoint requests or the API will send back an error.
 
-##User Schema
+## User Schema
 
 * Users in the database conform to the following object structure:
 
@@ -25,7 +25,7 @@
 | POST   | /auth/register     | Creates a user using the information sent inside the `request body`.                                       |
 | POST   | /auth/login        | returns a token to be added to the header of all other requests.                                           |
 
-##Student Schema
+## Student Schema
 
 * Students in the database conform to the following object structure:
 
