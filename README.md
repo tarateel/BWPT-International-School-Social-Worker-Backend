@@ -1,7 +1,7 @@
 # Backend
 
 # Description
-* The API consists of register and login processes for school admins and social workers. Once registered, a user is then required to login, returning an authorization token. This token is required in the header for all other endpoint requests or the API will send back an error.
+* The API consists of register and login processes for school admins and social workers. Once registered, a user is then required to login, returning an authorization token. This token is required in the header for all other endpoint requests or the API will send back an error. Once logged in and authenticated, a user can view all students, view information for an individual student, add a student, and update information for a student.
 
 ## User Schema
 
