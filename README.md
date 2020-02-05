@@ -1,6 +1,7 @@
 # Backend
 
-## Description
+# Description
+* The API consists of register and login processes for school admins and social workers. Once registered, a user is then required to login, returning an authorization token. This token is required for all other endpoint requests in the header or the API will send back an error.
 
 ###User Schema
 
@@ -9,19 +10,19 @@ Users in the database conform to the following object structure:
 ```js
 {
 	"username": "test6", // String, required
-  "password": "test", // String, required
-  "email": "somebody@something.com", //String, optional
+	"password": "test", // String, required
+	"email": "somebody@something.com", //String, optional
 	"phone": "1234567890", // String, optional
 	"organization": "Ghana School", // String, required
 	"first_name": "Agbenyaga", //String, required
 	"last_name": "Nkansah", // String, required
 	"role": "social worker" // String, required
-}
+}```
 
-| Method | URL            | Description                                                                                                                       |
-| ------ | -------------- | --------------------------------------------------------------------------------------------------------------------------------- |
-| POST   | /auth/register     | Creates a user using the information sent inside the `request body`.                                                              |
-| POST    | /auth/login     | Returns an array of all the user objects contained in the database.
+| Method | URL                | Description                                                                                  |
+| ------ | ------------------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| POST   | /auth/register     | Creates a user using the information sent inside the `request body`.                        |
+| POST   | /auth/login        | Returns an array of all the user objects contained in the database.
 
 ###
 
